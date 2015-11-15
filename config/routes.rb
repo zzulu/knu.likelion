@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+
+  devise_for :users
+
+  root 'home#index'
+  get '/home/index'
+  get '/home/about'  
+  resources :post
+  resources :reply, :only => [:create, :destroy]
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
