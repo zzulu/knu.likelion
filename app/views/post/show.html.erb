@@ -1,0 +1,84 @@
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="intro-header" style="background-image: url('<%= image_url('post-bg.jpg')%>')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1><%= @post.title %></h1>
+                    <h2 class="subheading"><%= @post.sub_title %></h2>
+                    <span class="meta">Posted by <a href="mailto:<%= @post.user.email %>"><%= @post.user.email %></a> on <%= @post.created_at.in_time_zone(9).strftime("%B %d, %Y %H:%M:%S") %></span>
+                    <br>
+                    <% if user_signed_in? %>
+                        <% if @post.user.id == current_user.id %>
+                            <%= form_tag edit_post_path, method: "get" do %>
+                                <button type="submit" class="btn btn-primary col-lg-2" style="margin: 2px">수정</button>
+                            <% end %>
+                            <%= form_tag "/post/#{@post.id}", method: "delete" do %>
+                                <button type="submit" class="btn btn-danger col-lg-2" style="margin: 2px">삭제</button>
+                            <% end %>
+                        <% end %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p style="padding-bottom: 30px">
+                    <% unless @post.context.nil? %>
+                        <%= @post.context.gsub("\r\n","<br>").html_safe %>
+                    <% end %>
+                </p>
+
+                <hr>
+
+                <div>
+                    <%= bootstrap_form_for(@reply, url: {controller: "reply",action: "create"}, method: "post") do |f| %>
+                        <div class="field">
+                            <%= hidden_field_tag(:post_id, @post.id) %>
+                            <%= f.text_area :context, label: "댓글", style:"resize: none", rows: 4, :required => true %>
+                        </div>
+
+                        <div class="actions">
+                            <%= f.submit "Reply" %>
+                        </div>
+                    <% end %>   
+
+                </div>
+
+                <hr>
+
+                <div>
+                    <% @post.replies.each do |r|%>
+                        <div class="col-lg-8">
+                            <a href="mailto:<%= r.user.email %>"><h4><%= r.user.email %></h4></a>
+                            <h6><%= r.updated_at.in_time_zone(9).strftime("%Y/%m/%d \n %a %p %I:%M:%S")%></h6>
+                            <p><%= r.context %></p>
+                        </div>
+
+                        <% if user_signed_in? %>
+                            <% if r.user.id == current_user.id %>
+                                <div class="col-lg-4">
+                                    <%= form_tag reply_path, method: "delete" do %>
+                                        <%= hidden_field_tag(:reply_id, r.id) %>
+                                        <button type="submit" class="btn btn-danger" style="float:right; margin: 2px">삭제</button>
+                                    <% end %>
+                                </div>
+                            <% end %>
+                        <% end %>
+                    <% end %>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</article>
