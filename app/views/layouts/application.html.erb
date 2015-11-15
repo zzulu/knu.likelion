@@ -34,21 +34,39 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">likeLion - Hwang Junwoo</a>
+                <a class="navbar-brand" href="/">likeLion - Hwang Junwoo</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="/home/index">Home</a>
+                        <a href="/">Home</a>
                     </li>
                     <li>
                         <a href="/home/about">About</a>
                     </li>
+                    <!-- <li>
+                        <a href="/home/post">Posts</a>
+                    </li> -->
+
+                    <% if user_signed_in? %>
                     <li>
-                        <a href="/home/post">Post</a>
+                        <a href="/post/new">Write</a>
                     </li>
+
+                    <li>
+                        <a href="/users/edit">Hello, <%= current_user.email%></a>
+                    </li>
+                    <li>
+                      	<%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+                    </li>
+                    <% else %>
+                    <li>
+                    	<%= link_to 'Sign in', new_user_session_path %>
+                    </li>
+
+                    <% end %>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
