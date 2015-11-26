@@ -10,6 +10,7 @@ user = User.new
 user.email = 'capollux@naver.com'
 user.password = '12341234'
 user.password_confirmation = '12341234'
+user.name = '황준우'
 user.save!
 
 Post.create(user_id: 1, title: "안녕하세요. 황준우입니다.", sub_title: "전체 운영진 지원입니다.", context: "2015. 11. 10., 오후 9:30, Lee Duhee <iamdoo2@gmail.com> 작성:\r\n\r\n

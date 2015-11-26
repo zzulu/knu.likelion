@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="site-heading">
-                    <h1>likeLion</h1>
+                    <h1>ZZULU</h1>
                     <hr class="small">
                     <span class="subheading">A simple little idea that will change everything.</span>
                 </div>
@@ -29,7 +29,7 @@
                         <%= p.sub_title %>
                     </h3>
                 </a>
-                <p class="post-meta">Posted by <a href="mailto:<%= p.user.email %>"><%= p.user.email %></a> on <%= p.created_at.in_time_zone(9).strftime("%B %d, %Y") %></p>
+                <p class="post-meta">Posted by <a href="mailto:<%= p.user.email %>"><%= p.user.name %></a> on <%= p.created_at.in_time_zone(9).strftime("%B %d, %Y") %></p>
             </div>
             <hr>
             <% end %>

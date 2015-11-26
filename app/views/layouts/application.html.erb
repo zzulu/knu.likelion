@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-	<title>likeLion - Hwang Junwoo</title>
+	<title>ZZULU</title>
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 	<%= csrf_meta_tags %>
@@ -34,7 +34,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">likeLion - Hwang Junwoo</a>
+                <a class="navbar-brand" href="/">ZZULU</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -56,7 +56,7 @@
                     </li>
 
                     <li>
-                        <a href="/users/edit">Hello, <%= current_user.email%></a>
+                        <a href="/users/edit">Hello, <%= current_user.name %></a>
                     </li>
                     <li>
                       	<%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
