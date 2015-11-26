@@ -19,7 +19,11 @@
             <%= devise_error_messages! %>
 
             <div class="field">
-              <%= f.email_field :email, autofocus: true , :disabled => true %>
+              <%= f.text_field :name %>
+            </div>
+
+            <div class="field">
+              <%= f.email_field :email, :disabled => true %>
             </div>
 
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
