@@ -7,7 +7,7 @@
                 <div class="post-heading">
                     <h1><%= @post.title %></h1>
                     <h2 class="subheading"><%= @post.sub_title %></h2>
-                    <span class="meta">Posted by <a href="mailto:<%= @post.user.email %>"><%= @post.user.email %></a> on <%= @post.created_at.in_time_zone(9).strftime("%B %d, %Y %H:%M:%S") %></span>
+                    <span class="meta">Posted by <a href="mailto:<%= @post.user.email %>"><%= @post.user.name %></a> on <%= @post.created_at.in_time_zone(9).strftime("%B %d, %Y %H:%M:%S") %></span>
                     <br>
                     <% if user_signed_in? %>
                         <% if @post.user.id == current_user.id %>
@@ -57,7 +57,7 @@
                 <div>
                     <% @post.replies.each do |r|%>
                         <div class="col-lg-8">
-                            <a href="mailto:<%= r.user.email %>"><h4><%= r.user.email %></h4></a>
+                            <a href="mailto:<%= r.user.email %>"><h4><%= r.user.name %></h4></a>
                             <h6><%= r.updated_at.in_time_zone(9).strftime("%Y/%m/%d \n %a %p %I:%M:%S")%></h6>
                             <p><%= r.context %></p>
                         </div>
