@@ -1,6 +1,6 @@
 class PostController < ApplicationController
   
-  before_action :authenticate_user!, except:[:show]
+  before_action :authenticate_user!, except:[:show, :list]
 
   def list
     @post_all = Post.order("created_at DESC")
