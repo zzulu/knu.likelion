@@ -46,7 +46,7 @@
                 <% end %>
 
                 <li>
-                    <%= "Page "+(params[:id].to_i+1).to_s+" of "+(((@count)/10)+1).to_s%>
+                    <%= "Page "+(params[:id].to_i+1).to_s+" of "+(((@count-1)/10)+1).to_s%>
                 </li>
 
                 <%if params[:id].to_i==(@count-1)/10%>
