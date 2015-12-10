@@ -1,13 +1,13 @@
 <!-- Page Header -->
 <!-- Set your background image for this header on the line below. -->
-<header class="intro-header" style="background-image: url('<%= image_url('home-bg.jpg')%>')">
+<header class="intro-header" style="background-image: url('<%= image_url('posts-bg.png')%>')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="site-heading">
-                    <h1>ZZULU</h1>
+                    <h1>Posts</h1>
                     <hr class="small">
-                    <span class="subheading">A simple little idea that will change everything.</span>
+                    <span class="subheading">What I want to say.</span>
                 </div>
             </div>
         </div>
@@ -18,15 +18,14 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            
             <% @post.each do |p| %>
             <div class="post-preview">
                 <a href="/post/<%= p.id %>">
                     <h2 class="post-title">
                         <%= p.title %>
                     </h2>
-                    <!-- <h3 class="post-subtitle">
-
+                <!--<h3 class="post-subtitle">
+                        
                     </h3> -->
                 </a>
                 <p class="post-meta">Posted by <a href="mailto:<%= p.user.email %>"><%= p.user.name %></a> on <%= p.created_at.in_time_zone(9).strftime("%B %d, %Y") %></p>
@@ -36,9 +35,29 @@
 
             <!-- Pager -->
             <ul class="pager">
-                <li class="next">
-                    <a href="/post/list/0">More &rarr;</a>
+                <%if params[:id].to_i>0%>
+                    <li class="previous">
+                        <a href="/post/list/<%= params[:id].to_i-1%>">&larr; Previous</a>
+                    </li>
+                <% else %>                
+                    <li class="previous disabled">
+                        <a>&larr; Previous</a>
+                    </li>  
+                <% end %>
+
+                <li>
+                    <%= "Page "+(params[:id].to_i+1).to_s+" of "+(((@count)/10)+1).to_s%>
                 </li>
+
+                <%if params[:id].to_i==(@count-1)/10%>
+                    <li class="next disabled">
+                        <a>Next &rarr;</a>
+                    </li>
+                <% else %>
+                    <li class="next">
+                        <a href="/post/list/<%= params[:id].to_i+1%>">Next &rarr;</a>
+                    </li>
+                <% end %>
             </ul>
         </div>
     </div>

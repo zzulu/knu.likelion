@@ -51,10 +51,17 @@
                     </li> -->
 
                     <% if user_signed_in? %>
+
                     <li>
-                        <a href="/post/new">Write</a>
+                        <a href="/post/list/0">Posts</a>
                     </li>
 
+                    <% if current_user.admin==true %>
+                        <li>
+                            <a href="/post/new">Write</a>
+                        </li>
+                    <% end %>
+                        
                     <li>
                         <a href="/users/edit">Hello, <%= current_user.name %></a>
                     </li>
