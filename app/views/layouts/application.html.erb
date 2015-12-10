@@ -46,15 +46,12 @@
                     <li>
                         <a href="/home/about">About</a>
                     </li>
-                    <!-- <li>
-                        <a href="/home/post">Posts</a>
-                    </li> -->
-
-                    <% if user_signed_in? %>
 
                     <li>
                         <a href="/post/list/0">Posts</a>
                     </li>
+
+                    <% if user_signed_in? %>
 
                     <% if current_user.admin==true %>
                         <li>
