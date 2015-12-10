@@ -1,0 +1,13 @@
+.pager li > a:hover,
+.pager li > a:focus
+{
+	border-color: #ddd;
+}
+
+.pager .disabled > a,
+.pager .disabled > a:hover,
+.pager .disabled > a:focus,
+.pager .disabled > span
+{
+	background-color: transparent;
+}

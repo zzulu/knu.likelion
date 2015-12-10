@@ -5,7 +5,12 @@ Rails.application.routes.draw do
   root 'home#index'
   get '/home/index'
   get '/home/about'  
-  resources :post
+  resources :post, :except =>[:index] do
+    collection do
+      get 'list/:id' => 'post#list'
+    end
+  end
+
   resources :reply, :only => [:create, :destroy]
 
 

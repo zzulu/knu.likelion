@@ -2,6 +2,12 @@ class PostController < ApplicationController
   
   before_action :authenticate_user!, except:[:show]
 
+  def list
+    @post_all = Post.order("created_at DESC")
+    @post = @post_all.limit(10).offset(10*params[:id].to_i)
+    @count = @post_all.count
+  end
+
   def show
 
   	@post = Post.find(params[:id])
@@ -11,15 +17,25 @@ class PostController < ApplicationController
   end
 
   def new
+
+    if current_user.admin==false
+      redirect_to "/"
+    end
+
   	@post = Post.new
+
   end
 
   def create
 
+    if current_user.admin==false
+      redirect_to "/"
+    end
+
   	post = Post.new
   	post.user_id = current_user.id
   	post.title = params[:post][:title]
-  	post.sub_title = params[:post][:sub_title]
+  	# post.sub_title = params[:post][:sub_title]
   	post.context = params[:post][:context]
   	post.save
 
@@ -29,16 +45,24 @@ class PostController < ApplicationController
 
   def edit
 
+    if current_user.admin==false
+      redirect_to "/"
+    end
+
   	@post = Post.find(params[:id])
 
   end
 
   def update
 
+    if current_user.admin==false
+      redirect_to "/"
+    end
+
   	post = Post.find(params[:id])
   	post.user_id = current_user.id
   	post.title = params[:post][:title]
-  	post.sub_title = params[:post][:sub_title]
+  	# post.sub_title = params[:post][:sub_title]
   	post.context = params[:post][:context]
   	post.save
 
@@ -47,6 +71,11 @@ class PostController < ApplicationController
   end
 
   def destroy
+
+    if current_user.admin==false
+      redirect_to "/"
+    end
+
   	post = Post.find(params[:id])
   	post.destroy
 
