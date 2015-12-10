@@ -25,22 +25,21 @@
                     <h2 class="post-title">
                         <%= p.title %>
                     </h2>
-                    <h3 class="post-subtitle">
-                        <%= p.sub_title %>
-                    </h3>
+                    <!-- <h3 class="post-subtitle">
+
+                    </h3> -->
                 </a>
                 <p class="post-meta">Posted by <a href="mailto:<%= p.user.email %>"><%= p.user.name %></a> on <%= p.created_at.in_time_zone(9).strftime("%B %d, %Y") %></p>
             </div>
             <hr>
             <% end %>
 
-            <!-- <hr> -->
             <!-- Pager -->
-            <!-- <ul class="pager">
+            <ul class="pager">
                 <li class="next">
-                    <a href="#">Older Posts &rarr;</a>
+                    <a href="/post/list/0">More &rarr;</a>
                 </li>
-            </ul> -->
+            </ul>
         </div>
     </div>
 </div>
