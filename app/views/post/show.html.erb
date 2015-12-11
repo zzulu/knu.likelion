@@ -40,10 +40,19 @@
 
                 <div>
                     <%= bootstrap_form_for(@reply, url: {controller: "reply",action: "create"}, method: "post") do |f| %>
-                        <div class="field">
-                            <%= hidden_field_tag(:post_id, @post.id) %>
-                            <%= f.text_area :context, label: "댓글", style:"resize: none", rows: 4, :required => true %>
-                        </div>
+                        <% if user_signed_in? %>
+                            <div class="field">
+                                <%= hidden_field_tag(:post_id, @post.id) %>
+                                <%= f.text_area :context, label: "댓글", style:"resize: none", rows: 4, :required => true %>
+                            </div>
+                        <% else %>
+                            <fieldset disabled>
+                                <div class="field">
+                                    <%= hidden_field_tag(:post_id, @post.id) %>
+                                    <%= f.text_area :context, label: "댓글", style:"resize: none", rows: 4, :required => true%>
+                                </div>
+                            </fieldset>
+                        <%end %>
 
                         <div class="actions">
                             <%= f.submit "Reply" %>

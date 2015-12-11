@@ -18,6 +18,9 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div>
+                <%= "Page "+(params[:id].to_i+1).to_s+" of "+(((@count-1)/10)+1).to_s%>
+            </div>
             <% @post.each do |p| %>
             <div class="post-preview">
                 <a href="/post/<%= p.id %>">
@@ -44,10 +47,6 @@
                         <a>&larr; Previous</a>
                     </li>  
                 <% end %>
-
-                <li>
-                    <%= "Page "+(params[:id].to_i+1).to_s+" of "+(((@count-1)/10)+1).to_s%>
-                </li>
 
                 <%if params[:id].to_i==(@count-1)/10%>
                     <li class="next disabled">
