@@ -4,8 +4,14 @@
  * Licensed under Apache 2.0 (https://github.com/IronSummitMedia/startbootstrap/blob/gh-pages/LICENSE)
  */
 
+html,
 body {
-  font-family: 'Lora', 'Times New Roman', serif;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: 'Lora', 'Times New Roman', sans-serif;
   font-size: 20px;
   color: #404040;
 }
@@ -194,7 +200,7 @@ hr.small {
   font-weight: 600;
 }
 .intro-header .post-heading .meta {
-  font-family: 'Lora', 'Times New Roman', serif;
+  font-family: 'Lora', 'Times New Roman', sans-serif;
   font-style: italic;
   font-weight: 300;
   font-size: 20px;
