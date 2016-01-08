@@ -32,7 +32,7 @@
                         
                     </h3> -->
                 </a>
-                <p class="post-meta">Posted by <a href="mailto:<%= p.user.email %>"><%= p.user.name %></a> on <%= p.created_at.in_time_zone(9).strftime("%B %d, %Y") %></p>
+                <p class="post-meta">Posted by <a href="mailto:<%= p.user.email %>" style="font-style:normal"><%= p.user.name %></a> on <%= p.created_at.in_time_zone(9).strftime("%B %d, %Y") %></p>
             </div>
             <hr>
             <% end %>
