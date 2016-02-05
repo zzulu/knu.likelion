@@ -18,9 +18,10 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div>
+            <div class="text-center">
                 <%= "Page "+(params[:id].to_i+1).to_s+" of "+(((@count-1)/10)+1).to_s%>
             </div>
+            <hr class="small primary">
             <% @post.each do |p| %>
             <div class="post-preview">
                 <a href="/post/<%= p.id %>">
@@ -31,7 +32,7 @@
                         
                     </h3> -->
                 </a>
-                <p class="post-meta">Posted by <a href="mailto:<%= p.user.email %>"><%= p.user.name %></a> on <%= p.created_at.in_time_zone(9).strftime("%B %d, %Y") %></p>
+                <p class="post-meta">Posted by <a href="mailto:<%= p.user.email %>" style="font-style:normal"><%= p.user.name %></a> on <%= p.created_at.in_time_zone(9).strftime("%B %d, %Y") %></p>
             </div>
             <hr>
             <% end %>

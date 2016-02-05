@@ -4,8 +4,14 @@
  * Licensed under Apache 2.0 (https://github.com/IronSummitMedia/startbootstrap/blob/gh-pages/LICENSE)
  */
 
+html,
 body {
-  font-family: 'Lora', 'Times New Roman', serif;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: 'Lora','NanumSquare', 'Times New Roman', serif;
   font-size: 20px;
   color: #404040;
 }
@@ -22,8 +28,12 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans','NanumSquare','Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 800;
+  
+  small {
+    font-family: 'Lora','NanumSquare', 'Times New Roman', serif;
+  }
 }
 a {
   color: #404040;
@@ -42,7 +52,7 @@ blockquote {
 }
 hr.small {
   max-width: 100px;
-  margin: 15px auto;
+  margin: 20px auto;
   border-width: 4px;
   border-color: white;
 }
@@ -52,7 +62,7 @@ hr.small {
   left: 0;
   width: 100%;
   z-index: 3;
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans','NanumSquare', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 .navbar-custom .navbar-brand {
   font-weight: 800;
@@ -145,7 +155,7 @@ hr.small {
 .intro-header .site-heading,
 .intro-header .post-heading,
 .intro-header .page-heading {
-  padding: 100px 0 50px;
+  padding: 50px 0 50px;
   color: white;
 }
 @media only screen and (min-width: 768px) {
@@ -169,7 +179,7 @@ hr.small {
   font-size: 24px;
   line-height: 1.1;
   display: block;
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', 'NanumSquare', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 300;
   margin: 10px 0 0;
 }
@@ -188,13 +198,13 @@ hr.small {
   display: block;
 }
 .intro-header .post-heading .subheading {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', 'NanumSquare', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 24px;
   margin: 10px 0 30px;
   font-weight: 600;
 }
 .intro-header .post-heading .meta {
-  font-family: 'Lora', 'Times New Roman', serif;
+  font-family: 'Lora', 'NanumSquare', 'Times New Roman', sans-serif;
   font-style: italic;
   font-weight: 300;
   font-size: 20px;
@@ -251,7 +261,7 @@ hr.small {
 .section-heading {
   font-size: 36px;
   margin-top: 60px;
-  font-weight: 700;
+  font-weight: 800;
 }
 .caption {
   text-align: center;
@@ -264,7 +274,8 @@ hr.small {
   border-bottom-left-radius: 5px;
 }
 footer {
-  padding: 50px 0 65px;
+  font-size: 16px;
+  padding: 20px 0 40px;
 }
 footer .list-inline {
   margin: 0;
@@ -323,7 +334,7 @@ form .row:first-child .floating-label-form-group {
   border-top: 1px solid #eeeeee;
 }
 .btn {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', 'NanumSquare', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-size: 14px;
   font-weight: 800;
@@ -346,7 +357,7 @@ form .row:first-child .floating-label-form-group {
 }
 .pager li > a,
 .pager li > span {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', 'NanumSquare', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-size: 14px;
   font-weight: 800;
