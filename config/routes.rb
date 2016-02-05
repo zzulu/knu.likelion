@@ -4,7 +4,10 @@ Rails.application.routes.draw do
 
   root 'home#index'
   get '/home/index'
-  get '/home/about'  
+  get '/home/about'
+
+  resources :portfolio, :except => [:index, :show]
+
   resources :post, :except =>[:index] do
     collection do
       get 'list/:id' => 'post#list'
