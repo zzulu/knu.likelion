@@ -6,7 +6,9 @@ gem 'autoprefixer-rails'
 
 gem 'devise'
 
-
+gem 'carrierwave'
+gem 'fog'
+gem 'mini_magick'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'

@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
   
-  	@post = Post.limit(5).order("created_at DESC")
+  	@portfolios = Portfolio.all
 
   end
 

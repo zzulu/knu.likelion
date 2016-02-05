@@ -15,16 +15,23 @@
                 <img class="img-responsive" src="<%= image_url('junwoo.png')%>" width="300px" alt>
                 <h2 class="section-heading">황준우<small> Hwang Junwoo</small></h2>
                 <hr class="small primary">
-                <p class="text-faded">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>
-                <p class="text-faded">안녕하세요. 황준우입니다.</p>
+                <p class="text-faded">
+                    경북대학교 공과대학 신소재공학부 전자재료전공 / IT대학 컴퓨터학부 부전공<br/>
+                    멋쟁이 사자처럼 / ifnill<br/>
+                    GIF2015 빅데이터 부문 3위 (Team 'ifnill')<br/>
+                    Android / HTML / CSS / JavaScript / Ruby on Rails<br/>
+                </p>
+                <% unless current_user.nil? %>
+                    <% if current_user.admin==true %>
+                        <%= button_to "Add", new_portfolio_path, method: :get, class: "btn btn-default" %>
+                    <% end %>
+                <% end %>
             </div>
         </div>
     </div>
 </section>
 
-
-
-<section class="bg-light-gray" id="services">
+<!-- <section id="services">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -33,146 +40,85 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 
 <section class="no-padding" id="portfolio">
     <div class="container-fluid">
         <div class="row no-gutter">
+
+        <% @portfolios.each do |p| %>
             <!-- do -->
             <div class="col-lg-4 col-sm-6">
-                <a href="#portfolioModal1" class="portfolio-box" data-toggle="modal">
-                    <img src="<%= image_url('home-bg.jpg')%>" class="img-responsive" alt="">
+                <a href="#portfolioModal_<%= p.id %>" class="portfolio-box" data-toggle="modal">
+                    <img src="<%= p.image.url %>" class="img-responsive" alt="<%= p.title %>">
                     <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">
                             <div class="project-category text-faded">
-                                Andorid
+                                <%= p.category %>
                             </div>
                             <div class="project-name">
-                                경북대학교 강의계획서
+                                <%= p.title %>
                             </div>
                         </div>
                     </div>
                 </a>
             </div>
-            <!-- end -->
-            <div class="col-lg-4 col-sm-6">
-                <a href="#" class="portfolio-box">
-                    <img src="<%= image_url('home-bg.jpg')%>" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="portfolio-box-caption-content">
-                            <div class="project-category text-faded">
-                                Category
+
+                <!-- Portfolio Modals -->
+                <div class="portfolio-modal modal fade" id="portfolioModal_<%= p.id %>" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-content">
+                        <div class="close-modal" data-dismiss="modal">
+                            <div class="lr">
+                                <div class="rl">
+                                </div>
                             </div>
-                            <div class="project-name">
-                                Project Name
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8 col-lg-offset-2">
+                                    <div class="modal-body">
+                                        <h2><%= p.title %></h2>
+                                        <hr class="small primary">
+                                        <img src="<%= p.image.url %>" class="img-responsive img-centered" alt="">
+                                        <p>
+                                            <%= p.context.gsub("\r\n","<br>").html_safe %>
+                                        </p>
+                                        <ul class="list-inline item-details">
+                                            <li>Category:
+                                                <strong>
+                                                    <%= p.category %>
+                                                </strong>
+                                            </li>
+                                            <li>Date:
+                                                <strong>
+                                                    <%= p.date %>
+                                                </strong>
+                                            </li>
+                                            <li>Service:
+                                                <strong>
+                                                    <%= p.service %>
+                                                </strong>
+                                            </li>
+                                        </ul>
+
+                                        <% unless current_user.nil? %>
+                                            <% if current_user.admin==true %>
+                                                <%= button_to "Edit", "/portfolio/#{p.id}/edit", method: :get, class: "btn btn-primary" %>
+                                                <%= button_to "Delete", "/portfolio/#{p.id}", data: { confirm: "삭제합니다." }, method: :delete, class: "btn btn-danger" %>
+                                            <% end %>
+                                        <% end %>
+
+                                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a href="#" class="portfolio-box">
-                    <img src="<%= image_url('home-bg.jpg')%>" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="portfolio-box-caption-content">
-                            <div class="project-category text-faded">
-                                Category
-                            </div>
-                            <div class="project-name">
-                                Project Name
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a href="#" class="portfolio-box">
-                    <img src="<%= image_url('home-bg.jpg')%>" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="portfolio-box-caption-content">
-                            <div class="project-category text-faded">
-                                Category
-                            </div>
-                            <div class="project-name">
-                                Project Name
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a href="#" class="portfolio-box">
-                    <img src="<%= image_url('home-bg.jpg')%>" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="portfolio-box-caption-content">
-                            <div class="project-category text-faded">
-                                Category
-                            </div>
-                            <div class="project-name">
-                                Project Name
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <!-- do -->
-            <div class="col-lg-4 col-sm-6">
-                <a href="#" class="portfolio-box">
-                    <img src="<%= image_url('home-bg.jpg')%>" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="portfolio-box-caption-content">
-                            <div class="project-category text-faded">
-                                Category
-                            </div>
-                            <div class="project-name">
-                                Project Name
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
+                </div>
+            
+            <% end %>
             <!-- end -->
         </div>
     </div>
 </section>
-
-
-<!-- Portfolio Modals -->
-<div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-content">
-        <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-                <div class="rl">
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <div class="modal-body">
-                        <h2>Project Title</h2>
-                        <hr class="small primary">
-                        <img src="<%= image_url('home-bg.jpg')%>" class="img-responsive img-centered" alt="">
-                        <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
-                        <ul class="list-inline item-details">
-                            <li>Client:
-                                <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
-                                </strong>
-                            </li>
-                            <li>Date:
-                                <strong><a href="http://startbootstrap.com">April 2014</a>
-                                </strong>
-                            </li>
-                            <li>Service:
-                                <strong><a href="http://startbootstrap.com">Web Development</a>
-                                </strong>
-                            </li>
-                        </ul>
-                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
