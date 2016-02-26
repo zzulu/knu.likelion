@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'mysql2','~> 0.3.13'
+gem 'figaro'
+
 gem 'bootstrap_form'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
