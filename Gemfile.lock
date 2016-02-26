@@ -72,6 +72,8 @@ GEM
     erubis (2.7.0)
     excon (0.45.4)
     execjs (2.6.0)
+    figaro (1.1.1)
+      thor (~> 0.14)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
     fog (1.37.0)
@@ -207,6 +209,7 @@ GEM
     mini_portile2 (2.0.0)
     minitest (5.8.4)
     multi_json (1.11.2)
+    mysql2 (0.3.20)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
@@ -300,10 +303,12 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 4.1.0)
   devise
+  figaro
   fog
   jbuilder (~> 2.0)
   jquery-rails
   mini_magick
+  mysql2 (~> 0.3.13)
   rails (= 4.2.4)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
