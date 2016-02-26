@@ -1,3 +1,15 @@
+/* Custom CSS */
+
+#operator {
+  img {
+    padding: 5%
+  }
+}
+
+
+
+
+
 /*!
  * Clean Blog v1.0.0 (http://startbootstrap.com)
  * Copyright 2014 Start Bootstrap
@@ -11,13 +23,13 @@ body {
 }
 
 body {
-  font-family: 'Lora','NanumSquare', 'Times New Roman', serif;
+  font-family: 'Ubuntu', 'NanumSquare', 'Times New Roman', serif;
   font-size: 20px;
   color: #404040;
 }
 p {
   line-height: 1.5;
-  margin: 30px 0;
+  margin: 1em 0;
 }
 p a {
   text-decoration: underline;
@@ -28,11 +40,11 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Open Sans','NanumSquare','Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 800;
+  font-family: 'Ubuntu', 'NanumSquare','Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
   
   small {
-    font-family: 'Lora','NanumSquare', 'Times New Roman', serif;
+    font-family: 'Ubuntu', 'NanumSquare', 'Times New Roman', serif;
   }
 }
 a {
@@ -40,7 +52,7 @@ a {
 }
 a:hover,
 a:focus {
-  color: #0085a1;
+  color: #E60000;
 }
 a img:hover,
 a img:focus {
@@ -56,21 +68,27 @@ hr.small {
   border-width: 4px;
   border-color: white;
 }
+hr.primary {
+  border-color: #E60000;
+}
+hr.gray {
+   border-color: #797977;
+}
 .navbar-custom {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 3;
-  font-family: 'Open Sans','NanumSquare', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Ubuntu','NanumSquare', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 .navbar-custom .navbar-brand {
-  font-weight: 800;
+  font-weight: 700;
 }
 .navbar-custom .nav li a {
   text-transform: uppercase;
-  font-size: 12px;
-  font-weight: 800;
+  font-size: 14px;
+  font-weight: 700;
   letter-spacing: 1px;
 }
 @media only screen and (min-width: 768px) {
@@ -124,14 +142,14 @@ hr.small {
   }
   .navbar-custom.is-fixed .navbar-brand:hover,
   .navbar-custom.is-fixed .navbar-brand:focus {
-    color: #0085a1;
+    color: #E60000;
   }
   .navbar-custom.is-fixed .nav li a {
     color: #404040;
   }
   .navbar-custom.is-fixed .nav li a:hover,
   .navbar-custom.is-fixed .nav li a:focus {
-    color: #0085a1;
+    color: #E60000;
   }
   .navbar-custom.is-visible {
     /* if the user changes the scrolling direction, we show the header */
@@ -179,7 +197,7 @@ hr.small {
   font-size: 24px;
   line-height: 1.1;
   display: block;
-  font-family: 'Open Sans', 'NanumSquare', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Ubuntu', 'NanumSquare', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 300;
   margin: 10px 0 0;
 }
@@ -198,14 +216,13 @@ hr.small {
   display: block;
 }
 .intro-header .post-heading .subheading {
-  font-family: 'Open Sans', 'NanumSquare', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Ubuntu', 'NanumSquare', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 24px;
   margin: 10px 0 30px;
   font-weight: 600;
 }
 .intro-header .post-heading .meta {
-  font-family: 'Lora', 'NanumSquare', 'Times New Roman', sans-serif;
-  font-style: italic;
+  font-family: 'Ubuntu', 'NanumSquare', 'Times New Roman', sans-serif;
   font-weight: 300;
   font-size: 20px;
 }
@@ -226,7 +243,7 @@ hr.small {
 .post-preview > a:hover,
 .post-preview > a:focus {
   text-decoration: none;
-  color: #0085a1;
+  color: #E60000;
 }
 .post-preview > a > .post-title {
   font-size: 30px;
@@ -241,7 +258,6 @@ hr.small {
 .post-preview > .post-meta {
   color: #808080;
   font-size: 18px;
-  font-style: italic;
   margin-top: 0;
 }
 .post-preview > .post-meta > a {
@@ -250,7 +266,7 @@ hr.small {
 }
 .post-preview > .post-meta > a:hover,
 .post-preview > .post-meta > a:focus {
-  color: #0085a1;
+  color: #E60000;
   text-decoration: underline;
 }
 @media only screen and (min-width: 768px) {
@@ -261,7 +277,7 @@ hr.small {
 .section-heading {
   font-size: 36px;
   margin-top: 60px;
-  font-weight: 800;
+  font-weight: 700;
 }
 .caption {
   text-align: center;
@@ -328,16 +344,16 @@ footer .copyright {
   opacity: 1;
 }
 .floating-label-form-group-with-focus label {
-  color: #0085a1;
+  color: #E60000;
 }
 form .row:first-child .floating-label-form-group {
   border-top: 1px solid #eeeeee;
 }
 .btn {
-  font-family: 'Open Sans', 'NanumSquare', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Ubuntu', 'NanumSquare', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 1px;
   border-radius: 0;
   padding: 15px 25px;
@@ -348,8 +364,8 @@ form .row:first-child .floating-label-form-group {
 }
 .btn-default:hover,
 .btn-default:focus {
-  background-color: #0085a1;
-  border: 1px solid #0085a1;
+  background-color: #E60000;
+  border: 1px solid #E60000;
   color: white;
 }
 .pager {
@@ -357,10 +373,10 @@ form .row:first-child .floating-label-form-group {
 }
 .pager li > a,
 .pager li > span {
-  font-family: 'Open Sans', 'NanumSquare', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Ubuntu', 'NanumSquare', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 1px;
   padding: 15px 25px;
   background-color: white;
@@ -369,8 +385,8 @@ form .row:first-child .floating-label-form-group {
 .pager li > a:hover,
 .pager li > a:focus {
   color: white;
-  background-color: #0085a1;
-  border: 1px solid #0085a1;
+  background-color: #E60000;
+  border: 1px solid #E60000;
 }
 .pager .disabled > a,
 .pager .disabled > a:hover,
@@ -383,12 +399,12 @@ form .row:first-child .floating-label-form-group {
 ::-moz-selection {
   color: white;
   text-shadow: none;
-  background: #0085a1;
+  background: #E60000;
 }
 ::selection {
   color: white;
   text-shadow: none;
-  background: #0085a1;
+  background: #E60000;
 }
 img::selection {
   color: white;
@@ -399,5 +415,5 @@ img::-moz-selection {
   background: transparent;
 }
 body {
-  webkit-tap-highlight-color: #0085a1;
+  webkit-tap-highlight-color: #E60000;
 }

@@ -1,11 +1,11 @@
-<header class="intro-header" style="background-image: url('<%= image_url('signup-bg.png')%>')">
+<header class="intro-header" style="background-image: url('<%= image_url('bg/signup.jpg')%>')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="site-heading">
-                    <h1>Sign up</h1>
+                    <h1>회원 가입</h1>
                     <hr class="small">
-                    <span class="subheading">Nice to meet you.</span>
+                    <span class="subheading">반갑습니다.</span>
                 </div>
             </div>
         </div>
@@ -21,30 +21,28 @@
             <%= devise_error_messages! %>
 
             <div class="field">
-              <%= f.text_field :name, autofocus: true %>
+              <%= f.text_field :name, autofocus: true, label: "이름" %>
             </div>
 
             <div class="field">
-              <%= f.email_field :email %>
+              <%= f.email_field :email, label: "이메일" %>
             </div>
 
             <div class="field">
-              <% if @minimum_password_length %>
-              <em>(<%= @minimum_password_length %> characters minimum)</em>
-              <% end %><br />
-              <%= f.password_field :password, autocomplete: "off" %>
+              <%= f.password_field :password, autocomplete: "off", label: "암호 (#{@minimum_password_length}자리 이상)" %>
             </div>
 
             <div class="field">
-              <%= f.password_field :password_confirmation, autocomplete: "off" %>
+              <%= f.password_field :password_confirmation, autocomplete: "off", label:"암호 확인" %>
             </div>
 
             <div class="actions">
-              <%= f.submit "Sign up" %>
+              <%= f.submit "가입하기" %>
             </div>
           <% end %>
 
           <%= render "devise/shared/links" %>
+
         </div>
     </div>
 </div>
