@@ -30,7 +30,7 @@
                         <%= p.title %>
                     </h2>
                 <% end %>
-                <p class="post-meta"><a href="mailto:<%= p.user.email %>" style="font-style:normal"><%= p.user.name %></a> 스크랩 하다, <%= p.created_at.in_time_zone(9).strftime("%Y년 %m월 %d일, %H시 %M분 %S초") %>, <%= p.hits %>명 봄.</p>
+                <p class="post-meta"><a href="mailto:<%= p.user.email %>" style="font-style:normal"><%= p.user.name %></a> 스크랩 하다, <%= p.created_at.in_time_zone(9).strftime("%Y년 %m월 %d일, %H시 %M분 %S초") %>, <%= p.hits %>번 읽힘.</p>
             </div>
             <hr>
             <% end %>
