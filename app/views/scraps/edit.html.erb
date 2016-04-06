@@ -1,0 +1,39 @@
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="intro-header" style="background-image: url('<%= image_url('bg/scrap-new.jpg')%>')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>스크랩 수정</h1>
+                    <hr class="small">
+                    <span class="subheading">이게 아니었다.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container" style="text-align: center">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			<%= bootstrap_form_for(@scrap) do |f| %>
+	            <div class="field">
+	              <%= f.text_field :title, autofocus: true, label:"제목" %>
+	            </div>
+
+	            <div class="field">
+	              <%= f.text_field :url, label:"URL", :required => true %>
+	            </div>
+
+							<div class="field">
+	              <%= f.text_area :context, label:"내용", style:"resize: none", rows: 15 %>
+	            </div>
+
+	            <div class="actions">
+	              <%= f.submit "수정하기" %>
+	            </div>
+	        <% end %>
+	    </div>
+	</div>
+</div>

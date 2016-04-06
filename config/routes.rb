@@ -1,21 +1,39 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: {registrations: 'users/registrations'}
 
   root 'home#index'
   get '/home/index'
   get '/home/about'
 
-  resources :portfolio, :except => [:index, :show]
-
-  resources :post, :except =>[:index] do
+  resources :posts, :except => [:index] do
     collection do
-      get 'list/:id' => 'post#list'
+      get 'list/:id' => 'posts#list', as: 'list'
     end
+    resources :comments, module: :posts, shallow: true
   end
 
-  resources :reply, :only => [:create, :destroy]
+  resources :playgrounds, :except => [:index] do
+    collection do
+      resources :ideas, :except => [:index] do
+        collection do
+          get 'list/:id' => 'ideas#list', as: 'list'
+        end
+        resources :comments, module: :ideas, shallow: true
+      end
 
+      resources :scraps, :except => [:index] do
+        collection do
+          get 'members/:id' => 'scraps#members', as: 'members'
+        end
+        resources :comments, module: :scraps, shallow: true
+      end
+
+      get 'friends'
+      get 'list/:id' => 'playgrounds#list', as: 'list'
+    end
+    resources :comments, module: :playgrounds, shallow: true
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

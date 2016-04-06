@@ -1,0 +1,17 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.pager li > a:hover,
+.pager li > a:focus
+{
+	border-color: #ddd;
+}
+
+.pager .disabled > a,
+.pager .disabled > a:hover,
+.pager .disabled > a:focus,
+.pager .disabled > span
+{
+	background-color: transparent;
+}

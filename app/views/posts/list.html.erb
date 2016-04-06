@@ -1,0 +1,65 @@
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="intro-header" style="background-image: url('<%= image_url('bg/post.jpg')%>')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>공지사항</h1>
+                    <hr class="small">
+                    <span class="subheading">알려드립니다.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="text-center">
+                <%= "총 "+(((@count-1)/10)+1).to_s+"장 중, "+(params[:id].to_i+1).to_s+"번째 장"%>
+            </div>
+            <hr class="small primary">
+            <% @post.each do |p| %>
+            <div class="post-preview">
+                <%= link_to post_path(p.id) do %>
+                    <h2 class="post-title">
+                        <%= p.title %>
+                    </h2>
+                <% end %>
+                <!--<h3 class="post-subtitle">
+                        
+                    </h3> -->
+                </a>
+                <p class="post-meta"><a href="mailto:<%= p.user.email %>" style="font-style:normal"><%= p.user.name %></a> 올림, <%= p.created_at.in_time_zone(9).strftime("%Y년 %m월 %d일, %H시 %M분 %S초") %></p>
+            </div>
+            <hr>
+            <% end %>
+
+            <!-- Pager -->
+            <ul class="pager">
+                <%if params[:id].to_i>0%>
+                    <li class="previous">
+                        <%= link_to list_posts_path(params[:id].to_i-1) do %>&larr; 이전<% end %>
+                    </li>
+                <% else %>                
+                    <li class="previous disabled">
+                        <a>&larr; 이전</a>
+                    </li>  
+                <% end %>
+
+                <%if params[:id].to_i==(@count-1)/10%>
+                    <li class="next disabled">
+                        <a>다음 &rarr;</a>
+                    </li>
+                <% else %>
+                    <li class="next">
+                        <%= link_to list_posts_path(params[:id].to_i+1) do %>다음 &rarr;<% end %>
+                    </li>
+                <% end %>
+            </ul>
+        </div>
+    </div>
+</div>
