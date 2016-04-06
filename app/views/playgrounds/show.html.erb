@@ -7,7 +7,7 @@
                 <div class="post-heading">
                     <h1><%= @playground.title %></h1>
                     <!-- <h2 class="subheading">  </h2> -->
-                    <span class="meta"><a href="mailto:<%= @playground.user.email %>" style="font-style:normal"><%= @playground.user.name %></a> 말하다, <%= @playground.created_at.in_time_zone(9).strftime("%Y년 %m월 %d일, %H시 %M분 %S초") %>, <%= @playground.hits %>명 봄.</span>
+                    <span class="meta"><a href="mailto:<%= @playground.user.email %>" style="font-style:normal"><%= @playground.user.name %></a> 말하다, <%= @playground.created_at.in_time_zone(9).strftime("%Y년 %m월 %d일, %H시 %M분 %S초") %>, <%= @playground.hits %>번 읽힘.</span>
                     <br>
                     <% if user_signed_in? %>
                         <% if @playground.user.id == current_user.id %>
