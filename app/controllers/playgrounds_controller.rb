@@ -11,8 +11,8 @@ class PlaygroundsController < ApplicationController
 
     (1..6).each do |x|
       @members[x.to_s] = User.where(team: x.to_s)
+      @counts['ideas'][x-1], @counts['scraps'][x-1] = 0, 0
       @members[x.to_s].each do |m|
-        @counts['ideas'][x-1], @counts['scraps'][x-1] = 0, 0
         @counts['ideas'][x-1] += m.ideas.count
         @counts['scraps'][x-1] += m.scraps.count
       end
