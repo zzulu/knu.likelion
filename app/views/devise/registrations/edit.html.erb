@@ -42,6 +42,10 @@
               <%= f.password_field :password_confirmation, autocomplete: "off", label: "암호 확인" %>
             </div>
 
+            <div class="field">
+              <%= f.password_field :current_password, autocomplete: "off", label: "현재 암호 (변경 사항 저장을 위해 입력)" %>
+            </div>
+
             <div class="actions">
               <%= f.submit "수정하기" %>
             </div>
