@@ -1,0 +1,45 @@
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="intro-header" style="background-image: url('<%= image_url('bg/scrap.jpg')%>')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading" style="padding-top: 100px; padding-bottom: 50px;">
+                    <img src="<% if @user.profile.url.nil? %><%= image_url('team/lion.png') %><% else %><%= @user.profile.url %><% end %>" width="220px" class="img-circle">
+                    <hr class="small">
+                    <span class="subheading"><%= current_user.name %> 스크랩 하다.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row">
+
+         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="text-center">
+                <%= link_to '스크랩하기', new_scrap_path, class:"btn btn-default" %>
+            </div>
+            <hr class="small light-gray">
+
+            <% @scrap.each do |p| %>
+            <div class="post-preview">
+                <%= link_to scrap_path(p.id) do %>
+                    <h2 class="post-title">
+                        <%= p.title %>
+                    </h2>
+                <% end %>
+                <p class="post-meta"><a href="mailto:<%= p.user.email %>" style="font-style:normal"><%= p.user.name %></a> 스크랩 하다, <%= p.created_at.in_time_zone(9).strftime("%Y년 %m월 %d일, %H시 %M분 %S초") %></p>
+            </div>
+            <hr>
+            <% end %>
+
+        </div>
+
+
+
+
+
+    </div>
+</div>

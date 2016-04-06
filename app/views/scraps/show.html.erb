@@ -1,0 +1,95 @@
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="intro-header" style="background-image: url('<%= image_url('bg/scrap-show.jpg')%>')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1><%= @scrap.title %></h1>
+                    <!-- <h2 class="subheading">  </h2> -->
+                    <span class="meta"><a href="mailto:<%= @scrap.user.email %>" style="font-style:normal"><%= @scrap.user.name %></a> 아이디어, <%= @scrap.created_at.in_time_zone(9).strftime("%Y년 %m월 %d일, %H시 %M분 %S초") %></span>
+                    <br>
+                    <% if user_signed_in? %>
+                        <% if @scrap.user.id == current_user.id %>
+                            <%= form_tag edit_scrap_path, method: "get" do %>
+                                <button type="submit" class="btn btn-primary col-lg-2" style="margin: 2px">수정</button>
+                            <% end %>
+                            <%= form_tag scrap_path, method: "delete" do %>
+                                <button type="submit" class="btn btn-danger col-lg-2" style="margin: 2px" data-confirm="삭제하나요?">삭제</button>
+                            <% end %>
+                        <% end %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+                <% unless @scrap.url.nil? %>
+                    <%= link_to '스크랩 바로가기', @scrap.url, target: '_blank', class:"btn btn-default" %>
+                <% end %>
+
+                <p style="padding-bottom: 30px">
+                    <% unless @scrap.context.nil? %>
+                        <%= @scrap.context.gsub("\r\n","<br>").html_safe %>
+                    <% end %>
+                </p>
+
+                <hr>
+
+                <div>
+                    <% @scrap.comments.each do |r|%>
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <a href="mailto:<%= r.user.email %>"><h4><%= r.user.name %></h4></a>
+                            <h6><%= r.updated_at.in_time_zone(9).strftime("%Y년 %m월 %d일, %H시 %M분 %S초")%></h6>
+                            <p><%= r.context %></p>
+                        </div>
+
+                        <% if user_signed_in? %>
+                            <% if r.user.id == current_user.id %>
+                                <div class="col-lg-4">
+                                    <%= form_tag comment_path, method: "delete" do %>
+                                        <button type="submit" class="btn btn-danger" style="float:right; margin: 2px" data-confirm="삭제하나요?">삭제</button>
+                                    <% end %>
+                                </div>
+                            <% end %>
+                        <% end %>
+                    </div>
+                    <hr>
+                    <% end %>
+                </div>
+
+
+                <div>
+                    <%= bootstrap_form_for [@scrap, @scrap.comments.new] do |f| %>
+                        <% if user_signed_in? %>
+                            <div class="field">
+                                <%= f.text_area :context, label: "댓글", style:"resize: none", rows: 4, :required => true %>
+                            </div>
+                        <% else %>
+                            <fieldset disabled>
+                                <div class="field">
+                                    <%= f.text_area :context, label: "댓글", style:"resize: none", rows: 4, :required => true%>
+                                </div>
+                            </fieldset>
+                        <%end %>
+
+                        <div class="actions">
+                            <%= f.submit "댓글쓰기" %>
+                        </div>
+                    <% end %>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</article>

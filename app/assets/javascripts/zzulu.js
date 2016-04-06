@@ -7,3 +7,21 @@ $(function() {
         event.preventDefault();
     });
 });
+
+$(document).on('ready page:load', function(event) {
+	$('.progress-idea').mouseover(function(){
+	      $(this).children('c').css("display","none");
+	      $(this).children('e').css("display","block");
+	}).mouseout(function(){
+	      $(this).children('c').css("display","block");
+	      $(this).children('e').css("display","none");
+	});
+
+	$('.progress-scrap').mouseover(function(){
+	      $(this).children('c').css("display","none");
+	      $(this).children('e').css("display","block");
+	}).mouseout(function(){
+	      $(this).children('c').css("display","block");
+	      $(this).children('e').css("display","none");
+	});
+});

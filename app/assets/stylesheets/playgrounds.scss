@@ -1,0 +1,66 @@
+// Place all the styles related to the playgrounds controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.no-gutter > [class*=col-] {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.pager li > a:hover,
+.pager li > a:focus
+{
+	border-color: #ddd;
+}
+
+.pager .disabled > a,
+.pager .disabled > a:hover,
+.pager .disabled > a:focus,
+.pager .disabled > span
+{
+	background-color: transparent;
+}
+
+#tab {
+	.active {
+		color: white;
+		background-color: #E60000;
+		border-color: #E60000;
+	}
+}
+
+
+#team {
+
+	padding-bottom: 30px;
+
+	.each-team {
+		padding-bottom: 20px;
+	}
+
+	.each-member {
+		padding-bottom: 15px;
+
+		img {
+			width: 100%;
+		}
+
+	}
+
+	img {
+		padding-bottom: 5px;	
+	}
+
+	.progress {
+		margin-bottom: 10px;
+
+		c {
+			display: block;
+		}
+
+		e {
+			display: none;
+		}
+	}
+	
+}
