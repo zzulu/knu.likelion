@@ -70,13 +70,15 @@
                             </li>
                             <% end %>
                         <% end %>
-                            
-                        <li>
-                            <%= link_to '놀이터', friends_playgrounds_path %>
-                        </li>
-                        <li>
-                            <%= link_to '스크랩', members_scraps_path(current_user.id) %>
-                        </li>
+                        
+                        <% if current_user.member==true %>
+                            <li>
+                                <%= link_to '놀이터', friends_playgrounds_path %>
+                            </li>
+                            <li>
+                                <%= link_to '스크랩', members_scraps_path(current_user.id) %>
+                            </li>
+                        <% end %>
                         <li>
                             <a href="/users/edit">안녕하세요, <%= current_user.name %>님</a>
                         </li>

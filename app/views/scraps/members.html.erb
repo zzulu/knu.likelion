@@ -7,7 +7,7 @@
                 <div class="site-heading" style="padding-top: 100px; padding-bottom: 50px;">
                     <img src="<% if @user.profile.url.nil? %><%= image_url('team/lion.png') %><% else %><%= @user.profile.url %><% end %>" width="220px" class="img-circle">
                     <hr class="small">
-                    <span class="subheading"><%= current_user.name %> 스크랩 하다.</span>
+                    <span class="subheading"><%= current_user.name %></span>
                 </div>
             </div>
         </div>

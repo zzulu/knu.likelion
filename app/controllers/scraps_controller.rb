@@ -1,6 +1,7 @@
 class ScrapsController < ApplicationController
 
-	before_action :authenticate_user!, except:[:show, :list]
+	before_action :authenticate_user!
+  before_action :is_member
 
 	def members
 		@user = User.find(params[:id])
@@ -9,6 +10,8 @@ class ScrapsController < ApplicationController
 
 	def show
   	@scrap = Scrap.find(params[:id])
+    @scrap.hits+=1
+    @scrap.save
   end
 
   def new
@@ -56,5 +59,11 @@ class ScrapsController < ApplicationController
   	redirect_to members_scraps_path(scrap.user.id)
 
   end
+
+    private
+
+      def is_member
+        redirect_to root_path unless User.find(current_user.id).member
+      end
 
 end

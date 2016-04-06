@@ -1,6 +1,7 @@
 class IdeasController < ApplicationController
 
-	before_action :authenticate_user!, except:[:show, :list]
+	before_action :authenticate_user!
+  before_action :is_member
 
 	def list
 		@idea_all = Idea.order("created_at DESC")
@@ -10,6 +11,8 @@ class IdeasController < ApplicationController
 
 	def show
   	@idea = Idea.find(params[:id])
+    @idea.hits+=1
+    @idea.save
   end
 
   def new
@@ -55,5 +58,11 @@ class IdeasController < ApplicationController
   	redirect_to list_ideas_path(0)
 
   end
+
+  private
+  
+      def is_member
+        redirect_to root_path unless User.find(current_user.id).member
+      end
 
 end

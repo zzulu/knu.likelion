@@ -1,6 +1,7 @@
 class PlaygroundsController < ApplicationController
 
-	before_action :authenticate_user!, except:[:show, :list]
+	before_action :authenticate_user!
+	before_action :is_member
 
 	def friends
 
@@ -17,7 +18,6 @@ class PlaygroundsController < ApplicationController
       end
     end
 
-
 	end
 
 	def list
@@ -27,7 +27,9 @@ class PlaygroundsController < ApplicationController
 	end
 
 	def show
-  	@playground = Playground.find(params[:id])
+  		@playground = Playground.find(params[:id])
+  		@playground.hits+=1
+   	@playground.save
   end
 
   def new
@@ -73,5 +75,10 @@ class PlaygroundsController < ApplicationController
   	redirect_to list_playgrounds_path(0)
 
   end
+
+	private
+		def is_member
+			redirect_to root_path unless User.find(current_user.id).member
+		end
 
 end

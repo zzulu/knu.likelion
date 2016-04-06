@@ -21,11 +21,12 @@ class CommentsController < ApplicationController
 	end
 
 	private
-	  def comment_params
-	  	params.require(:comment).permit(:context)
+		def comment_params
+		  	params.require(:comment).permit(:context)
 		end
-    def set_comments
-      @comment = Comment.find(params[:id])
-    end
+		
+		def set_comments
+			@comment = Comment.find(params[:id])
+		end
 
 end

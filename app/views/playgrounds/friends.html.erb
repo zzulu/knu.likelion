@@ -34,10 +34,10 @@
                 </div>
 
                 <div class="progress">
-                  <div class="progress-bar progress-bar-danger progress-idea" role="progressbar" aria-valuenow="<%= @counts['ideas'][hash.to_i] %>" aria-valuemin="0" aria-valuemax="200" style="min-width: 4em; width: <%= @counts['ideas'][hash.to_i]%>%;">
+                  <div class="progress-bar progress-bar-danger progress-idea" role="progressbar" aria-valuenow="<%= @counts['ideas'][hash.to_i] %>" aria-valuemin="0" aria-valuemax="1<%= @counts['ideas'].max %>" style="min-width: 4em; width: <% if @counts['ideas'][hash.to_i].nil? %><% else %><%= (@counts['ideas'][hash.to_i]*50).to_f/@counts['ideas'].max.to_f %><% end %>%;">
                     <c><%= @counts['ideas'][hash.to_i] %>개</c><e>아이디어</e>
                   </div>
-                  <div class="progress-bar progress-bar-warning progress-scrap" role="progressbar" aria-valuenow="<%= @counts['scraps'][hash.to_i] %>" aria-valuemin="0" aria-valuemax="200" style="min-width: 4em; width: <%= @counts['scraps'][hash.to_i] %>%;">
+                  <div class="progress-bar progress-bar-warning progress-scrap" role="progressbar" aria-valuenow="<%= @counts['scraps'][hash.to_i] %>" aria-valuemin="0" aria-valuemax="<%= @counts['scraps'].max %>" style="min-width: 4em; width: <% if @counts['scraps'][hash.to_i].nil? %><% else %><%= (@counts['scraps'][hash.to_i]*50).to_f/@counts['scraps'].max.to_f %><% end %>%;">
                     <c><%= @counts['scraps'][hash.to_i] %>개</c><e>스크랩</e>
                   </div>
                 </div>

@@ -10,12 +10,14 @@ class PostsController < ApplicationController
 
   def show
   	@post = Post.find(params[:id])
+    @post.hits+=1
+    @post.save
   end
 
   def new
 
     if current_user.admin==false
-      redirect_to "/"
+      redirect_to root_path
     end
 
   	@post = Post.new
@@ -25,7 +27,7 @@ class PostsController < ApplicationController
   def create
 
     if current_user.admin==false
-      redirect_to "/"
+      redirect_to root_path
     end
 
   	post = Post.new
@@ -41,7 +43,7 @@ class PostsController < ApplicationController
   def edit
 
     if current_user.admin==false
-      redirect_to "/"
+      redirect_to root_path
     end
 
   	@post = Post.find(params[:id])
@@ -51,7 +53,7 @@ class PostsController < ApplicationController
   def update
 
     if current_user.admin==false
-      redirect_to "/"
+      redirect_to root_path
     end
 
   	post = Post.find(params[:id])
@@ -67,13 +69,13 @@ class PostsController < ApplicationController
   def destroy
 
     if current_user.admin==false
-      redirect_to "/"
+      redirect_to root_path
     end
 
   	post = Post.find(params[:id])
   	post.destroy
 
-  	redirect_to "/"
+  	redirect_to root_path
 
   end
 
