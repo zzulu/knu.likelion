@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160406032226) do
+ActiveRecord::Schema.define(version: 20160406144319) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "context"
@@ -28,10 +28,10 @@ ActiveRecord::Schema.define(version: 20160406032226) do
   create_table "ideas", force: :cascade do |t|
     t.string   "title"
     t.text     "context"
-    t.integer  "hits"
+    t.integer  "hits",       default: 0
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "ideas", ["user_id"], name: "index_ideas_on_user_id"
@@ -39,10 +39,10 @@ ActiveRecord::Schema.define(version: 20160406032226) do
   create_table "playgrounds", force: :cascade do |t|
     t.string   "title"
     t.text     "context"
-    t.integer  "hits"
+    t.integer  "hits",       default: 0
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "playgrounds", ["user_id"], name: "index_playgrounds_on_user_id"
@@ -50,10 +50,10 @@ ActiveRecord::Schema.define(version: 20160406032226) do
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.text     "context"
-    t.integer  "hits"
+    t.integer  "hits",       default: 0
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
@@ -62,10 +62,10 @@ ActiveRecord::Schema.define(version: 20160406032226) do
     t.string   "title"
     t.text     "url"
     t.text     "context"
-    t.integer  "hits"
+    t.integer  "hits",       default: 0
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "scraps", ["user_id"], name: "index_scraps_on_user_id"
