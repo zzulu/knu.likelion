@@ -1,6 +1,6 @@
 # likelion at KNU
 
-@import 'https://github.com/capollux/blog-zzulu.git'
+from 'https://github.com/capollux/blog-zzulu.git'
 
 release 1.0.0
 --------------
@@ -18,7 +18,7 @@ release 1.1.0
 - 자유게시판, 아이디어 게시판, 스크랩 구현
 - 조별 진행상황 확인 가능
 
-hotfix 1.1.1-1.1.2
+hotfix 1.1.1-1.1.3
 --------------
 - 페이지마다 놀이터, 스크랩 권한 설정
 - 'URL' -> '주소'
