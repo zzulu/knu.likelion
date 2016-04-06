@@ -1,13 +1,13 @@
 <!-- Page Header -->
 <!-- Set your background image for this header on the line below. -->
-<header class="intro-header" style="background-image: url('<%= image_url('bg/playground-new.jpg')%>')">
+<header class="intro-header" style="background-image: url('<%= image_url('bg/idea-new.jpg')%>')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="site-heading">
-                    <h1>말 수정</h1>
+                    <h1>아이디어 수정</h1>
                     <hr class="small">
-                    <span class="subheading">아니, 그게 아니라.</span>
+                    <span class="subheading">아, 그게 아니었어.</span>
                 </div>
             </div>
         </div>
@@ -17,7 +17,7 @@
 <div class="container" style="text-align: center">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-			<%= bootstrap_form_for(@playground, url: {action: "update"}, method: "put") do |f| %>
+			<%= bootstrap_form_for(@idea) do |f| %>
 	            <div class="field">
 	              <%= f.text_field :title, autofocus: true, label:"제목" %>
 	            </div>

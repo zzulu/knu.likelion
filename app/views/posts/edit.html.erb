@@ -17,7 +17,7 @@
 <div class="container" style="text-align: center">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-			<%= bootstrap_form_for(@post, url: {action: "update"}, method: "put") do |f| %>
+			<%= bootstrap_form_for(@post) do |f| %>
 	            <div class="field">
 	              <%= f.text_field :title, autofocus: true, label:"제목" %>
 	            </div>
