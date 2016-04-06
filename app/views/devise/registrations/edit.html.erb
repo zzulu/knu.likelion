@@ -2,10 +2,10 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>계정 정보 수정</h1>
+                <div class="site-heading" style="padding-top: 100px; padding-bottom: 50px;">
+                    <img src="<% if resource.profile.url.nil? %><%= image_url('team/lion.png') %><% else %><%= resource.profile.url %><% end %>" width="220px" class="img-circle">
                     <hr class="small">
-                    <span class="subheading"><%= current_user.email %></span>
+                    <span class="subheading">정보 수정</span>
                 </div>
             </div>
         </div>
@@ -23,6 +23,10 @@
             </div>
 
             <div class="field">
+              <%= f.file_field :profile, label: "사진", accept:"image/*" %>
+            </div>
+
+            <div class="field">
               <%= f.email_field :email, :disabled => true, label: "이메일"  %>
             </div>
 
@@ -36,10 +40,6 @@
 
             <div class="field">
               <%= f.password_field :password_confirmation, autocomplete: "off", label: "암호 확인" %>
-            </div>
-
-            <div class="field">
-              <%= f.password_field :current_password, autocomplete: "off" , label:"현재 암호 (수정 사항 저장을 위해 입력)"%>
             </div>
 
             <div class="actions">

@@ -58,29 +58,35 @@
                         </li>
                     <% end %>
                     <li>
-                        <a href="/post/list/0">공지사항</a>
+                        <%= link_to '공지사항', list_posts_path(0)%>
                     </li>
 
                     <% if user_signed_in? %>
 
-                    <% if current_user.admin==true %>
-                        <% if params[:controller]=="post"%>
-                        <li>
-                            <a href="/post/new">글쓰기</a>
-                        </li>
+                        <% if current_user.admin==true %>
+                            <% if params[:controller]=="posts"%>
+                            <li>
+                                <%= link_to '글쓰기', new_post_path %>
+                            </li>
+                            <% end %>
                         <% end %>
-                    <% end %>
-                        
-                    <li>
-                        <a href="/users/edit">안녕하세요, <%= current_user.name %>님</a>
-                    </li>
-                    <li>
-                      	<%= link_to '로그아웃', destroy_user_session_path, method: :delete %>
-                    </li>
-                    <% else %>
-                    <li>
-                    	<%= link_to '로그인', new_user_session_path %>
-                    </li>
+                            
+                        <li>
+                            <%= link_to '놀이터', friends_playgrounds_path %>
+                        </li>
+                        <li>
+                            <%= link_to '스크랩', members_scraps_path(current_user.id) %>
+                        </li>
+                        <li>
+                            <a href="/users/edit">안녕하세요, <%= current_user.name %>님</a>
+                        </li>
+                        <li>
+                          	<%= link_to '로그아웃', destroy_user_session_path, method: :delete %>
+                        </li>
+                        <% else %>
+                        <li>
+                        	<%= link_to '로그인', new_user_session_path %>
+                        </li>
 
                     <% end %>
                 </ul>

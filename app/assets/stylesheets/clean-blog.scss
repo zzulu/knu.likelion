@@ -9,7 +9,6 @@
 
 
 
-
 /*!
  * Clean Blog v1.0.0 (http://startbootstrap.com)
  * Copyright 2014 Start Bootstrap
@@ -56,7 +55,7 @@ a:focus {
 }
 a img:hover,
 a img:focus {
-  cursor: zoom-in;
+  cursor: pointer;
 }
 blockquote {
   color: #808080;
@@ -73,6 +72,15 @@ hr.primary {
 }
 hr.gray {
    border-color: #797977;
+}
+hr.light-gray {
+   border-color: #ddd;
+}
+hr.second {
+  border-color: #8DC3D9;
+}
+hr.third {
+  border-color: #ACACE6;
 }
 .navbar-custom {
   position: absolute;

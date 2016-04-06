@@ -11,23 +11,64 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151210192542) do
+ActiveRecord::Schema.define(version: 20160406032226) do
 
-  create_table "posts", force: :cascade do |t|
+  create_table "comments", force: :cascade do |t|
+    t.text     "context"
     t.integer  "user_id"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "ideas", force: :cascade do |t|
     t.string   "title"
     t.text     "context"
+    t.integer  "hits"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "replies", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "post_id"
+  add_index "ideas", ["user_id"], name: "index_ideas_on_user_id"
+
+  create_table "playgrounds", force: :cascade do |t|
+    t.string   "title"
     t.text     "context"
+    t.integer  "hits"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "playgrounds", ["user_id"], name: "index_playgrounds_on_user_id"
+
+  create_table "posts", force: :cascade do |t|
+    t.string   "title"
+    t.text     "context"
+    t.integer  "hits"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+
+  create_table "scraps", force: :cascade do |t|
+    t.string   "title"
+    t.text     "url"
+    t.text     "context"
+    t.integer  "hits"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "scraps", ["user_id"], name: "index_scraps_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -43,6 +84,9 @@ ActiveRecord::Schema.define(version: 20151210192542) do
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.string   "name"
+    t.text     "profile"
+    t.string   "team"
+    t.boolean  "member",                 default: false
     t.boolean  "admin",                  default: false
   end
 
