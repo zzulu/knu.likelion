@@ -9,7 +9,7 @@ class PlaygroundsController < ApplicationController
     @counts = Hash.new
     @counts['ideas'], @counts['scraps'] = Array.new, Array.new
 
-    (1..6).each do |x|
+    (1..7).each do |x|
       @members[x.to_s] = User.where(team: x.to_s)
       @counts['ideas'][x-1], @counts['scraps'][x-1] = 0, 0
       @members[x.to_s].each do |m|
