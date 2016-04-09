@@ -50,7 +50,7 @@
                         <% if user_signed_in? %>
                             <% if r.user.id == current_user.id %>
                                 <div class="col-lg-4">
-                                    <%= form_tag comment_path, method: "delete" do %>
+                                    <%= form_tag comment_path(r.id), method: "delete" do %>
                                         <button type="submit" class="btn btn-danger" style="float:right; margin: 2px" data-confirm="삭제하나요?">삭제</button>
                                     <% end %>
                                 </div>
