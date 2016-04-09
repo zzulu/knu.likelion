@@ -18,9 +18,13 @@
     <div class="row">
 
          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="text-center">
-                <%= link_to '스크랩하기', new_scrap_path, class:"btn btn-default" %>
-            </div>
+            
+            <% if current_user.id==@user.id %>
+                <div class="text-center">
+                    <%= link_to '스크랩하기', new_scrap_path, class:"btn btn-default" %>
+                </div>
+            <% end %>
+
             <hr class="small light-gray">
 
             <% @scrap.each do |p| %>
