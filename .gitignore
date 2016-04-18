@@ -40,3 +40,5 @@ bower.json
 
 # Windows files
 Thumbs.db
+# Ignore application configuration
+/config/application.yml
