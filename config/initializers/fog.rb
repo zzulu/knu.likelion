@@ -1,8 +1,8 @@
 CarrierWave.configure do |config|
 	config.fog_credentials = {
 		provider: 							'AWS',
-		aws_access_key_id: 			'AKIAJLQDMAYB3QEFU7QQ',
-		aws_secret_access_key: 	'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',
+		aws_access_key_id: 			ENV["AWS_ACCESS_KEY_ID"],
+		aws_secret_access_key: 	ENV["AWS_SECRET_ACCESS_KEY"],
 		region: 								'ap-northeast-2',
 	}
 	config.fog_directory = 'knulikelion'
