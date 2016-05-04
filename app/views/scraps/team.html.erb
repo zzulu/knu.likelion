@@ -24,7 +24,7 @@
          <hr class="small third">
          <% @scrap.each do |p| %>
          <div class="post-preview">
-             <%= link_to idea_path(p.id) do %>
+             <%= link_to scrap_path(p.id) do %>
                  <h2 class="post-title">
                      <%= p.title %>
                  </h2>
@@ -38,7 +38,7 @@
          <ul class="pager">
              <%if params[:id].to_i>0%>
                  <li class="previous">
-                     <%= link_to list_ideas_path(params[:id].to_i-1) do %>&larr; 이전<% end %>
+                     <%= link_to scrap_team_path(params[:scrap_id].to_i,params[:id].to_i-1) do %>&larr; 이전<% end %>
                  </li>
              <% else %>
                  <li class="previous disabled">
@@ -46,15 +46,13 @@
                  </li>
              <% end %>
 
-             <%= link_to '스크랩하기', new_idea_path, class:"btn btn-default" %>
-
              <%if params[:id].to_i==(@count-1)/10%>
                  <li class="next disabled">
                      <a>다음 &rarr;</a>
                  </li>
              <% else %>
                  <li class="next">
-                     <%= link_to list_ideas_path(params[:id].to_i+1) do %>다음 &rarr;<% end %>
+                     <%= link_to scrap_team_path(params[:scrap_id].to_i,params[:id].to_i+1) do %>다음 &rarr;<% end %>
                  </li>
              <% end %>
          </ul>
