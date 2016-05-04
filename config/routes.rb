@@ -24,8 +24,10 @@ Rails.application.routes.draw do
 
       resources :scraps, :except => [:index] do
         collection do
+          get 'list/:id' => 'scraps#list', as: 'list'
           get 'members/:id' => 'scraps#members', as: 'members'
         end
+        get 'team/:id' => 'scraps#team', as: 'team'
         resources :comments, module: :scraps, shallow: true
       end
 

@@ -7,10 +7,9 @@
         <div id="tab" class="text-center">
             <div class="btn-group" role="group">
                 <%= link_to '친구들', friends_playgrounds_path, class:"btn btn-default" %>
-                <%= link_to '자유롭게', list_playgrounds_path(0), class:"btn btn-default active" %>
+                <%= link_to '자유롭게', list_playgrounds_path(0), class:"btn btn-default" %>
                 <%= link_to '아이디어', list_ideas_path(0), class:"btn btn-default" %>
-                <%= link_to '스크랩', list_scraps_path(0), class:"btn btn-default" %>
-
+                <%= link_to '스크랩', list_scraps_path(0), class:"btn btn-default active" %>
             </div>
         </div>
         <hr class="small light-gray">
@@ -19,15 +18,15 @@
             <div class="text-center">
                 <%= "총 "+(((@count-1)/10)+1).to_s+"장 중, "+(params[:id].to_i+1).to_s+"번째 장"%>
             </div>
-            <hr class="small second">
-            <% @playground.each do |p| %>
+            <hr class="small third">
+            <% @scrap.each do |p| %>
             <div class="post-preview">
-                <%= link_to playground_path(p.id) do %>
+                <%= link_to idea_path(p.id) do %>
                     <h2 class="post-title">
                         <%= p.title %>
                     </h2>
                 <% end %>
-                <p class="post-meta"><a href="mailto:<%= p.user.email %>" style="font-style:normal"><%= p.user.name %></a> 말하다, <%= p.created_at.in_time_zone(9).strftime("%Y년 %m월 %d일 %H시 %M분") %>, <%= p.hits %>번 읽힘. 댓글 <%= p.comments.count %>개.</p>
+                <p class="post-meta"><a href="mailto:<%= p.user.email %>" style="font-style:normal"><%= p.user.name %></a> 아이디어, <%= p.created_at.in_time_zone(9).strftime("%Y년 %m월 %d일 %H시 %M분") %>, <%= p.hits %>번 읽힘. 댓글 <%= p.comments.count %>개.</p>
             </div>
             <hr>
             <% end %>
@@ -36,7 +35,7 @@
             <ul class="pager">
                 <%if params[:id].to_i>0%>
                     <li class="previous">
-                        <%= link_to list_playgrounds_path(params[:id].to_i-1) do %>&larr; 이전<% end %>
+                        <%= link_to list_ideas_path(params[:id].to_i-1) do %>&larr; 이전<% end %>
                     </li>
                 <% else %>
                     <li class="previous disabled">
@@ -44,7 +43,7 @@
                     </li>
                 <% end %>
 
-                <%= link_to '말하기', new_playground_path, class:"btn btn-default" %>
+                <%= link_to '스크랩하기', new_idea_path, class:"btn btn-default" %>
 
                 <%if params[:id].to_i==(@count-1)/10%>
                     <li class="next disabled">
@@ -52,7 +51,7 @@
                     </li>
                 <% else %>
                     <li class="next">
-                        <%= link_to list_playgrounds_path(params[:id].to_i+1) do %>다음 &rarr;<% end %>
+                        <%= link_to list_ideas_path(params[:id].to_i+1) do %>다음 &rarr;<% end %>
                     </li>
                 <% end %>
             </ul>
