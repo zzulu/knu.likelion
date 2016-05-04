@@ -9,6 +9,8 @@
                 <%= link_to '친구들', friends_playgrounds_path, class:"btn btn-default" %>
                 <%= link_to '자유롭게', list_playgrounds_path(0), class:"btn btn-default" %>
                 <%= link_to '아이디어', list_ideas_path(0), class:"btn btn-default active" %>
+                <%= link_to '스크랩', list_scraps_path(0), class:"btn btn-default" %>
+
             </div>
         </div>
         <hr class="small light-gray">
@@ -36,10 +38,10 @@
                     <li class="previous">
                         <%= link_to list_ideas_path(params[:id].to_i-1) do %>&larr; 이전<% end %>
                     </li>
-                <% else %>                
+                <% else %>
                     <li class="previous disabled">
                         <a>&larr; 이전</a>
-                    </li>  
+                    </li>
                 <% end %>
 
                 <%= link_to '새 아이디어', new_idea_path, class:"btn btn-default" %>

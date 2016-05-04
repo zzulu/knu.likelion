@@ -70,13 +70,13 @@
                             </li>
                             <% end %>
                         <% end %>
-                        
+
                         <% if current_user.member==true %>
                             <li>
                                 <%= link_to '놀이터', friends_playgrounds_path %>
                             </li>
                             <li>
-                                <%= link_to '스크랩', members_scraps_path(current_user.id) %>
+                                <%= link_to '나의 스크랩', members_scraps_path(current_user.id) %>
                             </li>
                         <% end %>
                         <li>
@@ -102,7 +102,7 @@
 <%= yield %>
 
 <!-- Footer -->
-	
+
 	<hr>
 
 	<footer>

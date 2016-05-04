@@ -11,6 +11,9 @@
                     <br>
                     <% if user_signed_in? %>
                         <% if @scrap.user.id == current_user.id %>
+                            <%= form_tag new_scrap_path, method: "get" do %>
+                                <button type="submit" class="btn btn-success col-lg-2" style="margin: 2px">스크랩하기</button>
+                            <% end %>
                             <%= form_tag edit_scrap_path, method: "get" do %>
                                 <button type="submit" class="btn btn-primary col-lg-2" style="margin: 2px">수정</button>
                             <% end %>
