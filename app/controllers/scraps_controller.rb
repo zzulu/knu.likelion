@@ -3,6 +3,29 @@ class ScrapsController < ApplicationController
 	before_action :authenticate_user!
   before_action :is_member
 
+	def list
+		@scrap_all = Scrap.order("created_at DESC")
+    @scrap = @scrap_all.limit(10).offset(10*params[:id].to_i)
+    @count = @scrap_all.count
+	end
+
+	def team
+
+		@team_name = params[:scrap_id].to_s+"조"
+
+		@team_member = User.where(team: params[:scrap_id].to_s)
+
+		@user_id = Array.new
+		@team_member.each do |m|
+			@user_id << m.id
+		end
+		@scrap_all = Scrap.where(user_id: @user_id)
+
+		@scrap = @scrap_all.limit(10).offset(10*params[:id].to_i)
+		@count = @scrap_all.count if @scrap_all
+
+	end
+
 	def members
 		@user = User.find(params[:id])
 		@scrap = @user.scraps.order("created_at DESC")

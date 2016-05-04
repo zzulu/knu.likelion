@@ -1,0 +1,68 @@
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="intro-header" style="background-image: url('<%= image_url('bg/scrap.jpg')%>')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading" style="padding-top: 100px; padding-bottom: 50px;">
+                    <h1>조별 스크랩</h1>
+                    <hr class="small">
+                    <span class="subheading"><%= @team_name %></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row">
+
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+         <div class="text-center">
+             <%= "총 "+(((@count-1)/10)+1).to_s+"장 중, "+(params[:id].to_i+1).to_s+"번째 장"%>
+         </div>
+         <hr class="small third">
+         <% @scrap.each do |p| %>
+         <div class="post-preview">
+             <%= link_to idea_path(p.id) do %>
+                 <h2 class="post-title">
+                     <%= p.title %>
+                 </h2>
+             <% end %>
+             <p class="post-meta"><a href="mailto:<%= p.user.email %>" style="font-style:normal"><%= p.user.name %></a> 아이디어, <%= p.created_at.in_time_zone(9).strftime("%Y년 %m월 %d일 %H시 %M분") %>, <%= p.hits %>번 읽힘. 댓글 <%= p.comments.count %>개.</p>
+         </div>
+         <hr>
+         <% end %>
+
+         <!-- Pager -->
+         <ul class="pager">
+             <%if params[:id].to_i>0%>
+                 <li class="previous">
+                     <%= link_to list_ideas_path(params[:id].to_i-1) do %>&larr; 이전<% end %>
+                 </li>
+             <% else %>
+                 <li class="previous disabled">
+                     <a>&larr; 이전</a>
+                 </li>
+             <% end %>
+
+             <%= link_to '스크랩하기', new_idea_path, class:"btn btn-default" %>
+
+             <%if params[:id].to_i==(@count-1)/10%>
+                 <li class="next disabled">
+                     <a>다음 &rarr;</a>
+                 </li>
+             <% else %>
+                 <li class="next">
+                     <%= link_to list_ideas_path(params[:id].to_i+1) do %>다음 &rarr;<% end %>
+                 </li>
+             <% end %>
+         </ul>
+     </div>
+
+
+
+
+
+    </div>
+</div>
