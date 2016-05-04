@@ -20,9 +20,10 @@ class ScrapsController < ApplicationController
 			@user_id << m.id
 		end
 		@scrap_all = Scrap.where(user_id: @user_id)
+		@scrap_all = @scrap_all.order("created_at DESC")
 
 		@scrap = @scrap_all.limit(10).offset(10*params[:id].to_i)
-		@count = @scrap_all.count if @scrap_all
+		@count = @scrap_all.count
 
 	end
 
