@@ -1,7 +1,7 @@
 class ScrapsController < ApplicationController
 
-	before_action :authenticate_user!
-  before_action :is_member
+	before_action :authenticate_user!, except: [:list, :team, :members, :show]
+  before_action :is_member, except: [:list, :team, :members, :show]
 
 	def list
 		@scrap_all = Scrap.order("created_at DESC")
