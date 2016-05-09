@@ -18,12 +18,14 @@
     <div class="row">
 
          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            
-            <% if current_user.id==@user.id %>
+
+         <% if user_signed_in? %>
+            <% if current_user.id==@user.id && current_user.member %>
                 <div class="text-center">
                     <%= link_to '스크랩하기', new_scrap_path, class:"btn btn-default" %>
                 </div>
             <% end %>
+          <% end %>
 
             <hr class="small light-gray">
 
@@ -34,7 +36,7 @@
                         <%= p.title %>
                     </h2>
                 <% end %>
-                <p class="post-meta"><a href="mailto:<%= p.user.email %>" style="font-style:normal"><%= p.user.name %></a> 스크랩 하다, <%= p.created_at.in_time_zone(9).strftime("%Y년 %m월 %d일 %H시 %M분") %>, <%= p.hits %>번 읽힘, 댓글 <%= p.comments.count %>개.</p>
+                <p class="post-meta"><%= link_to "#{p.user.name}", members_scraps_path(p.id), style:"font-style:normal" %> 스크랩 하다, <%= p.created_at.in_time_zone(9).strftime("%Y년 %m월 %d일 %H시 %M분") %>, <%= p.hits %>번 읽힘, 댓글 <%= p.comments.count %>개.</p>
             </div>
             <hr>
             <% end %>

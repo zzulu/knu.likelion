@@ -3,14 +3,19 @@
 <head>
 
 	<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="<%= image_url('favicon.ico')%>" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="likeLion at KNU" />
+	<meta property="og:title" content="멋쟁이사자처럼, 경북대학교" />
+	<meta property="og:image" content="<%= image_url('emblem.png')%>" />
+	<meta property="og:url" content="http://knu.likelion.net" />
+	<meta property="og:type" content="website" />
+  <meta name="description" content="">
+  <link rel="shortcut icon" href="<%= image_url('favicon.ico')%>" />
 
 
-	<title>멋쟁이 사자처럼, 경북대학교</title>
+
+	<title>멋쟁이사자처럼, 경북대학교</title>
 	<%= stylesheet_link_tag    'application',params[:controller], media: 'all', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 	<%= csrf_meta_tags %>
@@ -37,7 +42,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">멋쟁이 사자처럼, 경북대학교</a>
+                <a class="navbar-brand" href="/">멋쟁이사자처럼, 경북대학교</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -48,7 +53,7 @@
                     </li>
                     <% if params[:controller]=="home" %>
                         <li class="page-scroll">
-                            <a href="#about">멋쟁이 사자처럼?</a>
+                            <a href="#about">멋쟁이사자처럼?</a>
                         </li>
                         <li class="page-scroll">
                             <a href="#team">멋사, 경북대?</a>
@@ -61,9 +66,19 @@
                         <%= link_to '공지사항', list_posts_path(0)%>
                     </li>
 
+										<li>
+												<%= link_to '놀이터', friends_playgrounds_path %>
+										</li>
+
                     <% if user_signed_in? %>
 
-                        <% if current_user.admin==true %>
+                        <% if current_user.member==true %>
+                            <li>
+                                <%= link_to '나의 스크랩', members_scraps_path(current_user.id) %>
+                            </li>
+                        <% end %>
+
+												<% if current_user.admin==true %>
                             <% if params[:controller]=="posts"%>
                             <li>
                                 <%= link_to '글쓰기', new_post_path %>
@@ -71,14 +86,6 @@
                             <% end %>
                         <% end %>
 
-                        <% if current_user.member==true %>
-                            <li>
-                                <%= link_to '놀이터', friends_playgrounds_path %>
-                            </li>
-                            <li>
-                                <%= link_to '나의 스크랩', members_scraps_path(current_user.id) %>
-                            </li>
-                        <% end %>
                         <li>
                             <a href="/users/edit">안녕하세요, <%= current_user.name %>님</a>
                         </li>
@@ -111,7 +118,7 @@
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <ul class="list-inline text-center">
                         <hr class="small primary">
-                        <h4><strong>멋쟁이 사자처럼 at 경북대학교</strong></h4>
+                        <h4><strong>멋쟁이사자처럼 at 경북대학교</strong></h4>
                         <ul class="list-unstyled">
                             <!-- <li><i class="fa fa-phone fa-fw"></i> (123) 456-7890</li> -->
                             <li><i class="fa fa-envelope-o fa-fw"></i>  <a href="mailto:knu@likelion.net">knu@likelion.net</a></li>
