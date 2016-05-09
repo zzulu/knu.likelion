@@ -1,7 +1,7 @@
 class PlaygroundsController < ApplicationController
 
-	before_action :authenticate_user!
-	before_action :is_member
+	before_action :authenticate_user!, except: [:friends, :list, :show]
+	before_action :is_member, except: [:friends, :list, :show]
 
 	def friends
 

@@ -21,12 +21,12 @@
             <hr class="small third">
             <% @scrap.each do |p| %>
             <div class="post-preview">
-                <%= link_to idea_path(p.id) do %>
+                <%= link_to scrap_path(p.id) do %>
                     <h2 class="post-title">
                         <%= p.title %>
                     </h2>
                 <% end %>
-                <p class="post-meta"><a href="mailto:<%= p.user.email %>" style="font-style:normal"><%= p.user.name %></a> 아이디어, <%= p.created_at.in_time_zone(9).strftime("%Y년 %m월 %d일 %H시 %M분") %>, <%= p.hits %>번 읽힘. 댓글 <%= p.comments.count %>개.</p>
+                <p class="post-meta"><%= link_to "#{p.user.name}", members_scraps_path(p.id), style:"font-style:normal" %> 스크랩하다, <%= p.created_at.in_time_zone(9).strftime("%Y년 %m월 %d일 %H시 %M분") %>, <%= p.hits %>번 읽힘. 댓글 <%= p.comments.count %>개.</p>
             </div>
             <hr>
             <% end %>
@@ -35,7 +35,7 @@
             <ul class="pager">
                 <%if params[:id].to_i>0%>
                     <li class="previous">
-                        <%= link_to list_ideas_path(params[:id].to_i-1) do %>&larr; 이전<% end %>
+                        <%= link_to list_scraps_path(params[:id].to_i-1) do %>&larr; 이전<% end %>
                     </li>
                 <% else %>
                     <li class="previous disabled">
@@ -43,15 +43,13 @@
                     </li>
                 <% end %>
 
-                <%= link_to '스크랩하기', new_idea_path, class:"btn btn-default" %>
-
                 <%if params[:id].to_i==(@count-1)/10%>
                     <li class="next disabled">
                         <a>다음 &rarr;</a>
                     </li>
                 <% else %>
                     <li class="next">
-                        <%= link_to list_ideas_path(params[:id].to_i+1) do %>다음 &rarr;<% end %>
+                        <%= link_to list_scraps_path(params[:id].to_i+1) do %>다음 &rarr;<% end %>
                     </li>
                 <% end %>
             </ul>

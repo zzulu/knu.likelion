@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
 		def comment_params
 		  	params.require(:comment).permit(:context)
 		end
-		
+
 		def set_comments
 			@comment = Comment.find(params[:id])
 		end

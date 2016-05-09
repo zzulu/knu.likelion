@@ -7,7 +7,7 @@
                 <div class="post-heading">
                     <h1><%= @post.title %></h1>
                     <!-- <h2 class="subheading">  </h2> -->
-                    <span class="meta"><a href="mailto:<%= @post.user.email %>" style="font-style:normal"><%= @post.user.name %></a> 올림, <%= @post.created_at.in_time_zone(9).strftime("%Y년 %m월 %d일, %H시 %M분 %S초") %>, <%= @post.hits %>번 읽힘.</span>
+                    <span class="meta"><%= link_to "#{@post.user.name}", members_scraps_path(@post.user.id), style:"font-style:normal" %> 올림, <%= @post.created_at.in_time_zone(9).strftime("%Y년 %m월 %d일, %H시 %M분 %S초") %>, <%= @post.hits %>번 읽힘.</span>
                     <br>
                     <% if user_signed_in? %>
                         <% if @post.user.id == current_user.id %>
@@ -42,7 +42,7 @@
                     <% @post.comments.each do |r|%>
                     <div class="row">
                         <div class="col-lg-8">
-                            <a href="mailto:<%= r.user.email %>"><h4><%= r.user.name %></h4></a>
+                            <h4><%= link_to "#{r.user.name}", members_scraps_path(r.user.id), style:"font-style:normal" %></h4>
                             <h6><%= r.updated_at.in_time_zone(9).strftime("%Y년 %m월 %d일, %H시 %M분 %S초")%></h6>
                             <p><%= r.context %></p>
                         </div>
@@ -82,7 +82,7 @@
                         <div class="actions">
                             <%= f.submit "댓글쓰기" %>
                         </div>
-                    <% end %>   
+                    <% end %>
 
                 </div>
 

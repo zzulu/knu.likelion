@@ -1,7 +1,7 @@
 class ScrapsController < ApplicationController
 
-	before_action :authenticate_user!
-  before_action :is_member
+	before_action :authenticate_user!, except: [:list, :team, :members, :show]
+  before_action :is_member, except: [:list, :team, :members, :show]
 
 	def list
 		@scrap_all = Scrap.order("created_at DESC")
@@ -20,9 +20,10 @@ class ScrapsController < ApplicationController
 			@user_id << m.id
 		end
 		@scrap_all = Scrap.where(user_id: @user_id)
+		@scrap_all = @scrap_all.order("created_at DESC")
 
 		@scrap = @scrap_all.limit(10).offset(10*params[:id].to_i)
-		@count = @scrap_all.count if @scrap_all
+		@count = @scrap_all.count
 
 	end
 
