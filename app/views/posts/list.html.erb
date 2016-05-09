@@ -33,7 +33,7 @@
 
                     </h3> -->
                 </a>
-                <p class="post-meta"><%= link_to "#{p.user.name}", members_scraps_path(p.id), style:"font-style:normal" %> 올림, <%= p.created_at.in_time_zone(9).strftime("%Y년 %m월 %d일 %H시 %M분") %>, <%= p.hits %>번 읽힘. 댓글 <%= p.comments.count %>개.</p>
+                <p class="post-meta"><%= link_to "#{p.user.name}", members_scraps_path(p.user.id), style:"font-style:normal" %> 올림, <%= p.created_at.in_time_zone(9).strftime("%Y년 %m월 %d일 %H시 %M분") %>, <%= p.hits %>번 읽힘. 댓글 <%= p.comments.count %>개.</p>
             </div>
             <hr>
             <% end %>
